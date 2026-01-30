@@ -1,12 +1,12 @@
 body {
   text-align: center;
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  background: #f2f2f200;
 }
 
 canvas {
-  background: #000;
-  border: 3px solid #4CAF50;
+  background: #640c8d;
+  border: 3px solid #0439b6;
 }
 .controls {
   display: flex;
@@ -32,7 +32,7 @@ canvas {
 }
 canvas {
   border: 2px solid #333;
-  background: black; /* fallback si no carga la imagen */
+  background: rgb(128, 56, 192); /* fallback si no carga la imagen */
 }
 
 .controls {
