@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+canvas {
+  background: #000;
+  border: 3px solid #4CAF50;
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.controls button {
+  font-size: 24px;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  background: #333;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .controls {
+    display: none; /* Ocultar botones en escritorio */
+  }
+}
