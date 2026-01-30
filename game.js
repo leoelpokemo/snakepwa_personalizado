@@ -1,15 +1,26 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const scoreEl = document.getElementById("score");
+const pauseBtn = document.getElementById("pauseBtn");
 
 let snake = [{ x: 150, y: 150 }];
 let food = { x: 60, y: 60 };
 let dx = 10;
 let dy = 0;
 let score = 0;
+let isPaused = false;
+
+// 🖼️ Imagen de fondo
+const bgImage = new Image();
+bgImage.src = "fondo.png"; // <-- cambia por la ruta de tu imagen
 
 function draw() {
+  if (isPaused) return;
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Fondo
+  ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
   // Comida
   ctx.fillStyle = "red";
@@ -49,14 +60,16 @@ function resetGame() {
   dy = 0;
   score = 0;
   scoreEl.textContent = score;
+  isPaused = false;
+  pauseBtn.textContent = "⏸️ Pausa";
 }
 
-// 🎯 Función única para teclado y táctil
-function changeDirection(direction) {
-  if (direction === "up" && dy === 0) { dx = 0; dy = -10; }
-  if (direction === "down" && dy === 0) { dx = 0; dy = 10; }
-  if (direction === "left" && dx === 0) { dx = -10; dy = 0; }
-  if (direction === "right" && dx === 0) { dx = 10; dy = 0; }
+// 🎯 Control de dirección
+function changeDirection(dir) {
+  if (dir === "up" && dy === 0) { dx = 0; dy = -10; }
+  if (dir === "down" && dy === 0) { dx = 0; dy = 10; }
+  if (dir === "left" && dx === 0) { dx = -10; dy = 0; }
+  if (dir === "right" && dx === 0) { dx = 10; dy = 0; }
 }
 
 // ⌨️ Teclado
@@ -65,6 +78,16 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowDown") changeDirection("down");
   if (e.key === "ArrowLeft") changeDirection("left");
   if (e.key === "ArrowRight") changeDirection("right");
+  if (e.key === " ") togglePause(); // barra espaciadora
 });
 
+// ⏸️ Botón pausa
+pauseBtn.addEventListener("click", togglePause);
+
+function togglePause() {
+  isPaused = !isPaused;
+  pauseBtn.textContent = isPaused ? "▶️ Reanudar" : "⏸️ Pausa";
+}
+
 setInterval(draw, 100);
+
