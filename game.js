@@ -12,7 +12,7 @@ let isPaused = false;
 
 // 🖼️ Imagen de fondo
 const bgImage = new Image();
-bgImage.src = "fondo.png"; // <-- cambia por la ruta de tu imagen
+bgImage.src = "assets/gato.jpg"; // <-- cambia por la ruta de tu imagen
 
 function draw() {
   if (isPaused) return;
@@ -64,7 +64,7 @@ function resetGame() {
   pauseBtn.textContent = "⏸️ Pausa";
 }
 
-// 🎯 Control de dirección
+// Control de dirección
 function changeDirection(dir) {
   if (dir === "up" && dy === 0) { dx = 0; dy = -10; }
   if (dir === "down" && dy === 0) { dx = 0; dy = 10; }
@@ -72,7 +72,7 @@ function changeDirection(dir) {
   if (dir === "right" && dx === 0) { dx = 10; dy = 0; }
 }
 
-// ⌨️ Teclado
+//  Teclado
 document.addEventListener("keydown", e => {
   if (e.key === "ArrowUp") changeDirection("up");
   if (e.key === "ArrowDown") changeDirection("down");
@@ -81,7 +81,7 @@ document.addEventListener("keydown", e => {
   if (e.key === " ") togglePause(); // barra espaciadora
 });
 
-// ⏸️ Botón pausa
+//  Botón pausa
 pauseBtn.addEventListener("click", togglePause);
 
 function togglePause() {
