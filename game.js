@@ -12,7 +12,7 @@ let isPaused = false;
 
 // 🖼️ Imagen de fondo
 const bgImage = new Image();
-bgImage.src = "assets/gato.jpg"; // <-- cambia por la ruta de tu imagen
+bgImage.src = "/assets/gato.jpg"; // <-- cambia por la ruta de tu imagen
 
 function draw() {
   if (isPaused) return;
